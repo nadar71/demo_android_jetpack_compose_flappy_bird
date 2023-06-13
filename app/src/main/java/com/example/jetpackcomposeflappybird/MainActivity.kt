@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                 modifier = Modifier.fillMaxSize().pointerInteropFilter {
                     when (it.action) {
                         MotionEvent.ACTION_DOWN -> {
+
                             if (gameState.value.isRunning())
                                 jumpState.value = !jumpState.value
                         }

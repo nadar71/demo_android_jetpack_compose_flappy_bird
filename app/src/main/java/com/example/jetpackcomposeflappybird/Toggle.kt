@@ -15,11 +15,16 @@ fun Toggle(
     onToggle: (Boolean) -> Unit
 ) {
     val toggleState: MutableState<Boolean> = mutableStateOf(false)
+
     if (animationStart.value.isFinished()) {
-        TextButton(modifier = modifier, onClick = {
-            toggleState.value = !animationStart.value.isRunning()
-            onToggle(toggleState.value)
-        }) {
+
+        TextButton(
+            modifier = modifier,
+            onClick = {
+                toggleState.value = !animationStart.value.isRunning()
+                onToggle(toggleState.value)
+            }
+        ) {
             Text(
                 fontSize = 32.sp,
                 text = if (!animationStart.value.isFinished())
