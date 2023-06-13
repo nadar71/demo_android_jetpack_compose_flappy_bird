@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeflappybird
+package com.example.jetpackcomposeflappybird.presentation.state
 
 data class GameState(private val status: Status = Status.STOPPED) {
     enum class Status {

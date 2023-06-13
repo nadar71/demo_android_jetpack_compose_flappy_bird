@@ -7,6 +7,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcomposeflappybird.presentation.state.GameState
 
 @Composable
 fun Toggle(

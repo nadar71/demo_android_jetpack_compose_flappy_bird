@@ -1,12 +1,14 @@
-package com.example.jetpackcomposeflappybird
+package com.example.jetpackcomposeflappybird.presentation.state
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.res.DeferredResource
 import androidx.compose.ui.unit.*
+
 
 data class PipesState(
     val upPipe: DeferredResource<ImageBitmap>,

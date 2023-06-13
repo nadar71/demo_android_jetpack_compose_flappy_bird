@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeflappybird
+package com.example.jetpackcomposeflappybird.presentation.state
 
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.drawscope.DrawScope

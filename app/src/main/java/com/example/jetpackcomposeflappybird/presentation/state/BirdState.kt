@@ -1,4 +1,4 @@
-package com.example.jetpackcomposeflappybird
+package com.example.jetpackcomposeflappybird.presentation.state
 
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.ImageBitmap
@@ -6,6 +6,8 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.res.DeferredResource
 import androidx.compose.ui.unit.*
+import com.example.jetpackcomposeflappybird.midX
+import com.example.jetpackcomposeflappybird.midY
 
 data class BirdState(val image: DeferredResource<ImageBitmap>) {
     private val imageWidth = 76

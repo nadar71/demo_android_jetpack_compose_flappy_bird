@@ -12,6 +12,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.res.loadImageResource
+import com.example.jetpackcomposeflappybird.presentation.state.BackgroundState
+import com.example.jetpackcomposeflappybird.presentation.state.BirdState
+import com.example.jetpackcomposeflappybird.presentation.state.GameState
+import com.example.jetpackcomposeflappybird.presentation.state.PipesState
 
 
 @Composable
@@ -31,6 +35,7 @@ fun GameConsole(
     val backgroundState = remember(background) { BackgroundState(background) }
     val pipesState = remember(upPipe, downPipe) { PipesState(upPipe, downPipe, gameScore) }
 
+    // if clickChange.value == true, then execute birdState.jump()
     remember(clickChange.value) { birdState.jump() }
 
     Canvas(modifier = modifier) {
@@ -72,6 +77,7 @@ fun GameConsole(
         }
     }
 }
+
 
 private fun finishFalling(
     animationStart: MutableState<GameState>,
