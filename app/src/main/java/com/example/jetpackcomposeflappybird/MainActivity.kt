@@ -27,9 +27,10 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun GameScreen() {
     val gameState  = remember { mutableStateOf(GameState()) }
-    val jumpState: MutableState<Boolean> = mutableStateOf(false)
+    val jumpState  = mutableStateOf(false)
     val gameScore  = remember { mutableStateOf(0) }
 
+    // Game view
     GameConsole(
         modifier = Modifier
             .fillMaxSize()
@@ -46,20 +47,26 @@ fun GameScreen() {
         jumpState,
         gameScore
     )
+
+
+    // Score text
     Text(
         modifier = Modifier.fillMaxWidth(),
         fontSize = 48.sp,
         text = gameScore.value.toString(),
         textAlign = TextAlign.Center
     )
+
+
+    // Sensor for start game/jump
     Toggle(
         modifier = Modifier.fillMaxSize(),
-        animationStart = gameState
+        gameStatus = gameState
     ) {
         if (it)
             gameState.value = GameState(GameState.Status.RUNNING)
         else
-            gameState.value = GameState(GameState.Status.STOPPED)
+            gameState.value = GameState(GameState.Status.GAMEOVER)
     }
 
 }

@@ -12,24 +12,24 @@ import com.example.jetpackcomposeflappybird.presentation.state.GameState
 @Composable
 fun Toggle(
     modifier: Modifier = Modifier,
-    animationStart: MutableState<GameState>,
+    gameStatus: MutableState<GameState>,
     onToggle: (Boolean) -> Unit
 ) {
-    val toggleState: MutableState<Boolean> = mutableStateOf(false)
+    val toggleState = mutableStateOf(false)
 
-    if (animationStart.value.isFinished()) {
-
+    // at start game and everytime the bird is dead
+    if (gameStatus.value.isGameOver()) {
         TextButton(
             modifier = modifier,
             onClick = {
-                toggleState.value = !animationStart.value.isRunning()
+                toggleState.value = !gameStatus.value.isRunning()
                 onToggle(toggleState.value)
             }
         ) {
             Text(
                 fontSize = 32.sp,
-                text = if (!animationStart.value.isFinished())
-                    "\n\n\nClick to Stop"
+                text = if (!gameStatus.value.isGameOver())
+                    "\n\n\nClick to Stop" // ? maybe in debug ?
                 else
                     "\n\n\nClick to Start"
             )

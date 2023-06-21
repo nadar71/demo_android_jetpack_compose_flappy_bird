@@ -46,9 +46,10 @@ data class BirdState(val image: DeferredResource<ImageBitmap>) {
              timeTick: Float,
              gameState: GameState
     ): Rect {
-        val value = if (gameState.isEnding()) 1
-        else if (timeTick < 0.25) 0
-        else if (timeTick >= 0.5 && timeTick < 0.75) 2
+        // select key frame on sprite sheet
+        val value = if (gameState.isGoingToEnd()) 1         // 2nd frame of img
+        else if (timeTick < 0.25) 0                     // 1st frame of img
+        else if (timeTick >= 0.5 && timeTick < 0.75) 2  // 3rd frame of img
         else 1
 
         return drawScope.draw(value, gameState)
@@ -66,13 +67,14 @@ data class BirdState(val image: DeferredResource<ImageBitmap>) {
             midX().toInt(), midY().toInt() - currentPosYOffset
         )
 
-        // Straight down if ending.
-        val birdRotate = if (gameState.isEnding()) -90 else upVelocity
+        // Rotate down if game is ending because bird is dead and falling down.
+        val birdRotate = if (gameState.isGoingToEnd()) -90 else upVelocity
 
         withTransform({ rotate(-birdRotate.toFloat(), rotateCenter.toOffset()) }, {
             image.resource.resource?.let {
                 drawImage(
                     image = it,
+                    // get the keyframe on spritesheet offsetting horizontally
                     srcOffset = IntOffset((imageWidth * value).dp.toIntPx(), 0),
                     srcSize = IntSize(imageWidth.dp.toIntPx(), imageHeight.dp.toIntPx()),
                     dstOffset = center,

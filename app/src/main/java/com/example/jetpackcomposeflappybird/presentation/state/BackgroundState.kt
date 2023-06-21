@@ -25,6 +25,7 @@ data class BackgroundState(val image: DeferredResource<ImageBitmap>) {
         if (currentPosX < - size.width) {
             currentPosX = 0
         }
+        // draw 2 background image to move seamless when it restart, with dstOffset + size.width
         image.resource.resource?.let {
             drawImage(
                 image = it,
